@@ -1,8 +1,7 @@
 /**
   * @author:          yangjun
   * @date             2017/8/21 18:37
-  * @description:     This type of processing is particularly suited for enhancing white or gray detail embedded in dark regions of an image,
-  *                   especially when the black areas are dominant in size.
+  * @description:     This type of processing is particularly suited for enhancing white or gray detail embedded in dark regions of an image, especially when the black areas are dominant in size.
   */ 
 #include <cv.h>
 #include <highgui\highgui.hpp>  
@@ -13,21 +12,21 @@ using namespace cv;
 int main(int argc, char *argv[])
 {
 	// 加载图片至内存  
-	IplImage* srcImage = cvLoadImage("F:\\DIP3E_Original_Images\\DIP3E_Original_Images_CH03\\Fig0304(a)(breast_digital_Xray).tif");
-	if (NULL == srcImage)
+	IplImage* image = cvLoadImage("F:\\DIP3E_Original_Images\\DIP3E_Original_Images_CH03\\Fig0304(a)(breast_digital_Xray).tif");
+	if (NULL == image)
 	{
 		return 0;
 	}
 
 	cvNamedWindow("SrcImage");
-	cvShowImage("SrcImage", srcImage);
+	cvShowImage("SrcImage", image);
 
 	// 获取图片的一些属性  
-	int height = srcImage->height;                // 图像高度  
-	int width = srcImage->width;                  // 图像宽度（像素为单位）  
-	int step = srcImage->widthStep;               // 相邻行的同列点之间的字节数  
-	int channels = srcImage->nChannels;           // 颜色通道数目 (1,2,3,4)  
-	uchar *data = (uchar *)srcImage->imageData;
+	int height = image->height;                // 图像高度  
+	int width = image->width;                  // 图像宽度（像素为单位）  
+	int step = image->widthStep;               // 相邻行的同列点之间的字节数  
+	int channels = image->nChannels;           // 颜色通道数目 (1,2,3,4)  
+	uchar *data = (uchar *)image->imageData;
 
 	// 反色操作  
 	for (int i = 0; i != height; ++i)
@@ -43,12 +42,12 @@ int main(int argc, char *argv[])
 
 	// 将图片显示到对话框中 
 	cvNamedWindow("DstImage");
-	cvShowImage("DstImage", srcImage);
+	cvShowImage("DstImage", image);
 
 	cvWaitKey();
 
 	// 释放内存与对话框销毁  
-	cvReleaseImage(&srcImage);
+	cvReleaseImage(&image);
 	cvDestroyWindow("SrcImage");
 	cvDestroyWindow("DstImage");
 
