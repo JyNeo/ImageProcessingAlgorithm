@@ -70,9 +70,9 @@ int main(int argc, char *argv[])
 				//data[i * step + j * channels + k] = data[i * step + j * channels + k] * data[i * step + j * channels + k] * data[i * step + j * channels + k];
 
 				f = data[i * step + j * channels + k];
-				f = (f + 0.5) / 256;
+				f = (f + 0.5) / 255;
 				f = powf(f, 3);
-				data[i * step + j * channels + k] = (int)(f * 256 - 0.5);
+				data[i * step + j * channels + k] = (int)(f * 255 - 0.5);
 			}
 		}
 	}
@@ -139,9 +139,9 @@ void GammaCorrect(IplImage* src, IplImage* dst, float gamma)
 			{
 				//预补偿，归一化，还原
 				f = pImage[j * channels + k];
-				f = (f + 0.5) / 256;
+				f = (f + 0.5) / 255;
 				f = powf(f, gamma);
-				pImage[j * channels + k] = (int)(f * 256 - 0.5);
+				pImage[j * channels + k] = (int)(f * 255 - 0.5);
 			}
 		}
 	}
@@ -190,9 +190,9 @@ void BuildTable(float gamma)
 	for (int i = 0; i < 256; i++)
 	{
 		//预补偿，归一化，还原
-		f = (i + 0.5) / 256;
+		f = (i + 0.5) / 255;
 		f = powf(f, gamma);
-		gGammaLUT[i] = (int)(f * 256 - 0.5);
+		gGammaLUT[i] = (int)(f * 255 - 0.5);
 	}
 }
 
