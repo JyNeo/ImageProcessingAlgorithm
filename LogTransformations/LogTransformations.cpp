@@ -63,9 +63,9 @@ int main(int argc, char *argv[])
 	int step = image->widthStep;
 	uchar *data = (uchar *)image->imageData;
 
-	for (int i = 0; i < width; i++)
+	for (int i = 0; i < height; i++)
 	{
-		for (int j = 0; j < height; j++)
+		for (int j = 0; j < width; j++)
 		{
 			for (int k = 0; k < channels; k++)
 			{
