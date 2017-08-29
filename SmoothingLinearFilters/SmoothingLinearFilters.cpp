@@ -49,7 +49,7 @@ int main() {
 				}
 
 				dst = (uchar *)dstImage->imageData + i * dstImage->widthStep + j;
-				*dst = (uchar)((sum + 4) / 9); //赋新值，四舍五入  
+				*dst = (uchar)(sum / 9); //赋新值，四舍五入  
 			}
 		}
 	}
